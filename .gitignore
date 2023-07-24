@@ -1,0 +1,10 @@
+.*
+!.gitignore
+!.editorconfig
+!.flake8
+
+*.py[co]
+
+build/
+dist/
+*.egg-info/
