@@ -32,4 +32,5 @@ lines_after_imports = 2
 multi_line_output = 5
 include_trailing_comma = true
 use_parentheses = true
+known_third_party = ['dl_plus']
 skip_glob = ['.*']

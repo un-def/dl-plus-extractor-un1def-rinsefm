@@ -4,4 +4,5 @@ A [dl-plus](https://github.com/un-def/dl-plus) extractor plugin for [Rinse FM](h
 
 ## Included extractors
 
+  * `un1def/rinsefm:channel` — channels (`https://rinse.fm/channels/<slug>/`)
   * `un1def/rinsefm:episode` — episodes (`https://rinse.fm/episodes/<slug>/`)
