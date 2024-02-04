@@ -11,14 +11,14 @@ authors = [
     {name = 'un.def', email = 'me@undef.im'},
 ]
 requires-python = '>= 3.8'
-dependencies = [
-    'dl-plus >= 0.6.0',
-]
 dynamic = ['version']
 
 [project.urls]
 Homepage = 'https://github.com/un-def/dl-plus-extractor-un1def-rinsefm'
 Repository = 'https://github.com/un-def/dl-plus-extractor-un1def-rinsefm.git'
+
+[project.optional-dependencies]
+dl-plus = ['dl-plus >= 0.6.0']
 
 [tool.setuptools]
 zip-safe = false
