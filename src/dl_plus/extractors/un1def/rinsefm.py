@@ -148,9 +148,19 @@ class RinseFMEpisodeExtractor(_RinseFMBaseExtractor):
             'description': clean_html(entry_data.get('description')),
             'formats': self._fetch_formats(file_url, slug),
         }
-        release_date = entry_data.get('episodeDate')
-        if release_date:
-            info_dict['release_timestamp'] = parse_iso8601(release_date)
+        # episode datetime is split to two fields:
+        # * episodeDate contains only date (time is 00:00:00)
+        # * episodeTime contains only time (date is today)
+        episode_date = entry_data.get('episodeDate')
+        if episode_date:
+            episode_time = entry_data.get('episodeTime')
+            if episode_time:
+                _date, _, _ = episode_date.partition('T')
+                _, _, _time = episode_time.partition('T')
+                episode_datetime = f'{_date}T{_time}'
+            else:
+                episode_datetime = episode_date
+            info_dict['release_timestamp'] = parse_iso8601(episode_datetime)
         duration = entry_data.get('episodeLength')
         if duration:
             info_dict['duration'] = duration * 60
