@@ -100,6 +100,7 @@ class _RinseFMBaseExtractor(Extractor):
             format_url = url
         format_dict = {
             'url': format_url,
+            'vcodec': 'none',
         }
         if not ext:
             ext = determine_ext(format_url)
