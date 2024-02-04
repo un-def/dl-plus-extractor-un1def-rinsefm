@@ -7,10 +7,10 @@ from dl_plus.extractor import Extractor, ExtractorError, ExtractorPlugin
 
 
 [
-    clean_html, int_or_none, parse_iso8601,
+    clean_html, dict_get, int_or_none, parse_iso8601,
     determine_ext, urlhandle_detect_ext,
 ] = ytdl.import_from('utils', [
-    'clean_html', 'int_or_none', 'parse_iso8601',
+    'clean_html', 'dict_get', 'int_or_none', 'parse_iso8601',
     'determine_ext', 'urlhandle_detect_ext',
 ])
 
@@ -144,7 +144,7 @@ class RinseFMEpisodeExtractor(_RinseFMBaseExtractor):
         info_dict = {
             'id': entry_data.get('id', slug),
             'display_id': slug,
-            'title': entry_data.get('title', slug),
+            'title': dict_get(entry_data, ('displayTitle', 'title'), slug),
             'description': clean_html(entry_data.get('description')),
             'formats': self._fetch_formats(file_url, slug),
         }
