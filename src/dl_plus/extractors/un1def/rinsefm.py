@@ -15,7 +15,7 @@ from dl_plus.extractor import Extractor, ExtractorError, ExtractorPlugin
 ])
 
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 
 plugin = ExtractorPlugin(__name__)

@@ -6,9 +6,9 @@ build-backend = 'setuptools.build_meta'
 name = 'dl-plus-extractor-un1def-rinsefm'
 description = 'A dl-plus extractor plugin for Rinse FM internet radio'
 readme = 'README.md'
-license = {file = 'LICENSE'}
+license = {text = 'MIT'}
 authors = [
-    {name = 'un.def', email = 'me@undef.im'},
+    {name = 'Dmitry Meyer', email = 'me@undef.im'},
 ]
 requires-python = '>= 3.8'
 dynamic = ['version']
@@ -16,6 +16,8 @@ dynamic = ['version']
 [project.urls]
 Homepage = 'https://github.com/un-def/dl-plus-extractor-un1def-rinsefm'
 Repository = 'https://github.com/un-def/dl-plus-extractor-un1def-rinsefm.git'
+Changelog = 'https://github.com/un-def/dl-plus-extractor-un1def-rinsefm/releases'
+Issues = 'https://github.com/un-def/dl-plus-extractor-un1def-rinsefm/issues'
 
 [project.optional-dependencies]
 dl-plus = ['dl-plus >= 0.6.0']
