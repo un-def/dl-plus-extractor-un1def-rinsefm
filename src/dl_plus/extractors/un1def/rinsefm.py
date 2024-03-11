@@ -15,7 +15,7 @@ from dl_plus.extractor import Extractor, ExtractorError, ExtractorPlugin
 ])
 
 
-__version__ = '0.1.1'
+__version__ = '0.2.0.dev0'
 
 
 plugin = ExtractorPlugin(__name__)
@@ -92,23 +92,20 @@ class _RinseFMBaseExtractor(Extractor):
         filesize = None
         # HEAD requests won't work
         response = self._request_webpage(url, video_id=slug, fatal=False)
-        if response:
-            format_url = response.url
-            ext = urlhandle_detect_ext(response)
-            filesize = int_or_none(response.headers.get('Content-Length'))
-        else:
-            format_url = url
-        format_dict = {
-            'url': format_url,
-            'vcodec': 'none',
-        }
+        if not response:
+            raise ExtractorError(
+                'Probably dead link', video_id=slug, expected=True)
+        format_url = response.url
+        ext = urlhandle_detect_ext(response)
         if not ext:
             ext = determine_ext(format_url)
-        if ext:
-            format_dict['ext'] = ext
-        if filesize:
-            format_dict['filesize'] = filesize
-        return [format_dict]
+        filesize = int_or_none(response.headers.get('Content-Length'))
+        return [{
+            'url': format_url,
+            'ext': ext,
+            'filesize': filesize,
+            'vcodec': 'none',
+        }]
 
 
 @plugin.register('channel')
